@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kitabs', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id_kitab')->primary();
+            $table->uuid('bab_id');
+            $table->string('judul_kitab');
+            $table->text('soal');
+            $table->text('jawaban');
             $table->timestamps();
+            $table->foreign('bab_id')
+                ->references('id_bab')
+                ->on('babs')
+                ->onDelete('cascade');
         });
     }
 

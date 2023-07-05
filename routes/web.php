@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BabController;
+use App\Http\Controllers\KitabController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//BABA
+Route::post('/bab',[BabController::class,'store']);
+Route::get('/bab',[BabController::class,'index']);
+
+// KITAB
+Route::get('/kitab/{id}',[KitabController::class,'index']);
+Route::get('/kitab/create/{id}',[KitabController::class,'create']);
+Route::post('/kitab',[KitabController::class,'store']);
+Route::get('/kitab/edit/{id_kitab}',[KitabController::class,'edit']);
+Route::post('/kitab/{id}',[KitabController::class,'update']);
+Route::post('delete/kitab', [KitabController::class,'destroy']);
