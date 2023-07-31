@@ -15,13 +15,10 @@ use App\Http\Controllers\KitabController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //BABA
 Route::post('/bab',[BabController::class,'store']);
 Route::get('/bab',[BabController::class,'index']);
+Route::get('/',[BabController::class,'index']);
 
 // KITAB
 Route::get('/kitab/{id}',[KitabController::class,'index']);
